@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liên Hệ - ToyKid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">TOY<span>KID</span></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html">Sản Phẩm</a></li>
+                    <li><a href="contact.html" class="active">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 40px;">
+        <h2 style="text-align: center; margin-bottom: 30px;">Gửi Tin Nhắn Cho Chúng Tôi</h2>
+        
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+            <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: var(--shadow);">
+                <h3>Thông tin cửa hàng</h3>
+                <p style="margin-top: 15px;">📍 <strong>Địa chỉ:</strong> 123 Đường Đồ Chơi, Quận 1, TP.HCM</p>
+                <p>📞 <strong>Điện thoại:</strong> 0123 456 789</p>
+                <p>📧 <strong>Email:</strong> lehoangthuytrang1011@gmail.com</p>
+                <p>⏰ <strong>Giờ mở cửa:</strong> 8:00 - 21:00 (Hàng ngày)</p>
+            </div>
+
+            <form style="display: flex; flex-direction: column; gap: 15px;">
+                <input type="text" placeholder="Họ và tên" style="padding: 12px; border-radius: 5px; border: 1px solid #ddd;">
+                <input type="email" placeholder="Email" style="padding: 12px; border-radius: 5px; border: 1px solid #ddd;">
+                <textarea placeholder="Nội dung cần tư vấn..." style="padding: 12px; border-radius: 5px; border: 1px solid #ddd; height: 120px;"></textarea>
+                <button type="submit" class="btn-primary" style="width: 150px;">GỬI NGAY</button>
+            </form>
+        </div>
+    </main>
+
+    <footer style="margin-top: 100px;">
+        <div class="container footer-bottom">
+            &copy; 2026 ToyKid Store 
+        </div>
+    </footer>
+</body>
+</html>

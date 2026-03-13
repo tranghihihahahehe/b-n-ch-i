@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Sản Phẩm - ToyKid</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .product-detail-container { display: flex; gap: 40px; margin-top: 40px; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); flex-wrap: wrap; }
+        .product-image-large { flex: 1; min-width: 300px; text-align: center; }
+        .product-image-large img { max-width: 100%; border-radius: 15px; transition: transform 0.3s; }
+        .product-image-large img:hover { transform: scale(1.05); }
+        .product-info-content { flex: 1; min-width: 300px; }
+        .product-status { color: #27ae60; font-weight: bold; display: block; margin-bottom: 10px; }
+        .price-tag { font-size: 36px; color: #e74c3c; font-weight: 700; margin: 15px 0; }
+        .specs-table { width: 100%; border-collapse: collapse; margin-bottom: 25px; }
+        .specs-table td { padding: 12px 5px; border-bottom: 1px solid #eee; }
+        .desc-box { margin-top: 30px; padding: 25px; background: #f9f9f9; border-radius: 15px; border-left: 6px solid #3498db; }
+        .desc-box h3 { color: #2c3e50; margin-bottom: 15px; }
+        .btn-buy { background: #3498db; color: white; border: none; padding: 18px; width: 100%; border-radius: 35px; cursor: pointer; font-weight: bold; font-size: 18px; transition: 0.3s; }
+        .btn-buy:hover { background: #2980b9; box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4); }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo" style="text-decoration:none; font-size:24px; font-weight:bold; color:#3498db;">TOY<span style="color:#f1c40f;">KID</span></a>
+                <ul class="nav-links" style="display:flex; list-style:none; gap:20px;">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html" class="active">Sản Phẩm</a></li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="product-render">
+        </main>
+
+    <script>
+        // KHO DỮ LIỆU CHI TIẾT RIÊNG BIỆT CHO 8 SẢN PHẨM
+        // KHO DỮ LIỆU ĐÃ ĐƯỢC CẬP NHẬT TÊN FILE ẢNH THEO THỰC TẾ
+        const toyDatabase = {
+            "1": { 
+                name: "Xe đua khí động học RC", price: "1.200.000đ", img: "img/download (1).jpg", brand: "ToyKid", age: "6-12", 
+                intro: "Áp dụng kiểu dáng khí động học hiện đại giúp giảm tối đa lực cản không khí. Xe có khả năng tăng tốc cực nhanh và giữ thăng bằng tốt khi vào cua gấp." 
+            },
+            "2": { 
+                name: "Mô hình Technic Black Series", price: "1.850.000đ", img: "img/download (2).jpg", brand: "ToyKid", age: "10+", 
+                intro: "Phiên bản đặc biệt với tone màu đen nhám huyền bí. Bộ lắp ráp gồm hơn 1200 chi tiết giúp bé khám phá cơ chế vận hành của động cơ và hệ thống truyền động piston." 
+            },
+            "3": { 
+                name: "Siêu Moto BMW Technic", price: "2.400.000đ", img: "img/download (3).jpg", brand: "ToyKid", age: "12+", 
+                intro: "Mô phỏng chân thực dòng xe Moto phân khối lớn BMW. Trang bị xích tải chuyển động thật, chân chống linh hoạt và hệ thống phuộc nhún lò xo êm ái." 
+            },
+            "4": { 
+                name: "Siêu xe Speed Car Green", price: "950.000đ", img: "img/download (4).jpg", brand: "ToyKid", age: "8-14", 
+                intro: "Màu xanh neon nổi bật. Xe sử dụng vỏ nhựa ABS cao cấp siêu bền, chống vỡ khi va chạm mạnh. Thích hợp cho các bé mới làm quen với xe điều khiển." 
+            },
+            "5": { 
+                name: "Drone X6 Pro Flycam", price: "3.500.000đ", img: "img/download (5).jpg", brand: "ToyKid", age: "14+", 
+                intro: "Thiết bị bay chuyên nghiệp với camera kép 4K siêu nét. Hỗ trợ cảm biến tránh vật cản 360 độ và tính năng tự động quay về khi pin yếu." 
+            },
+            "6": { 
+                name: "Xe địa hình Buggy RC", price: "1.450.000đ", img: "img/download.jpg", brand: "ToyKid", age: "10+", 
+                intro: "Hệ thống giảm xóc lò xo kép độc lập ở cả 4 bánh giúp xe chinh phục mọi địa hình từ cát, sỏi đến bùn lầy một cách bền bỉ." 
+            },
+            "7": { 
+                name: "Máy Bay Cứu Hộ Technic", price: "1.100.000đ", img: "img/images (1).jpg", brand: "ToyKid", age: "8-12", 
+                intro: "Đồ chơi phát triển trí tuệ giúp bé làm quen với các cơ chế cơ khí. Cánh quạt có thể xoay đồng bộ bằng tay vặn phía sau máy bay." 
+            },
+            "8": { 
+                name: "Bugatti Chiron RC Luxury", price: "4.200.000đ", img: "img/images.jpg", brand: "ToyKid", age: "10+", 
+                intro: "Phiên bản cao cấp tỉ lệ 1:12 với độ hoàn thiện cực cao. Có đèn LED pha phát sáng, cửa mở dạng cánh chim và âm thanh mô phỏng động cơ W16 sống động." 
+            }
+        };
+
+        // Lấy ID từ URL (ví dụ: product-detail.html?id=8)
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        const item = toyDatabase[id];
+        const render = document.getElementById('product-render');
+
+        if (item) {
+            render.innerHTML = `
+                <div class="product-detail-container">
+                    <div class="product-image-large">
+                        <img src="${item.img}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/500x400?text=ToyKid+Product'">
+                    </div>
+                    <div class="product-info-content">
+                        <span class="product-status">● Đang còn hàng</span>
+                        <h1 style="color: #2c3e50; font-size: 32px;">${item.name}</h1>
+                        <p style="color: #666;">Mã sản phẩm: TK-2026-${id}</p>
+                        <div class="price-tag">${item.price}</div>
+                        
+                        <table class="specs-table">
+                            <tr><td><b>Thương hiệu</b></td><td>${item.brand}</td></tr>
+                            <tr><td><b>Độ tuổi phù hợp</b></td><td>Từ ${item.age} tuổi</td></tr>
+                            <tr><td><b>Chất liệu</b></td><td>Nhựa ABS nguyên sinh an toàn</td></tr>
+                            <tr><td><b>Bảo hành</b></td><td>12 tháng chính hãng</td></tr>
+                        </table>
+                        
+                        <button class="btn-buy">THÊM VÀO GIỎ HÀNG</button>
+                        
+                        <div class="desc-box">
+                            <h3>Giới thiệu chi tiết</h3>
+                            <p>${item.intro}</p>
+                            <p style="margin-top:10px; font-style: italic; color: #7f8c8d;">* Lưu ý: Sản phẩm có các chi tiết nhỏ, tránh xa tầm tay trẻ em dưới 3 tuổi.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            render.innerHTML = `
+                <div style="text-align:center; padding:100px;">
+                    <h2 style="color: #e74c3c;">Sản phẩm không tồn tại!</h2>
+                    <p>Vui lòng quay lại danh sách sản phẩm để chọn món đồ chơi bạn yêu thích.</p>
+                    <a href="products.html" style="color:#3498db; font-weight:bold;"> Quay lại cửa hàng</a>
+                </div>`;
+        }
+    </script>
+</body>
+</html>

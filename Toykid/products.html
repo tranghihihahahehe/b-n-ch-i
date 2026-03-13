@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản Phẩm - ToyKid Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Style nhanh cho danh sách sản phẩm */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .product-card {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .product-card img { width: 100%; border-radius: 10px; margin-bottom: 15px; height: 200px; object-fit: contain; }
+        .product-card h3 { font-size: 18px; margin-bottom: 10px; color: #333; height: 45px; overflow: hidden; }
+        .product-card .price { color: #e74c3c; font-weight: bold; font-size: 20px; margin-bottom: 15px; display: block; }
+        .btn-detail {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .btn-detail:hover { background: #2980b9; }
+        .section-title { text-align: center; margin-top: 50px; font-size: 32px; color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo" style="text-decoration:none; font-size:24px; font-weight:bold; color:#3498db;">TOY<span style="color:#f1c40f;">KID</span></a>
+                <ul class="nav-links" style="display:flex; list-style:none; gap:20px;">
+                    <li><a href="index.html">Trang Chủ</a></li>
+                    <li><a href="products.html" class="active">Sản Phẩm</a></li>
+                    <li><a href="contact.html">Liên Hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="section-title">Kho Đồ Chơi Công Nghệ 2026</h2>
+        
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="img/download (1).jpg" alt="Xe đua" onerror="this.src='https://via.placeholder.com/250x200'">
+                <h3>Xe đua khí động học RC</h3>
+                <span class="price">1.200.000đ</span>
+                <a href="product-detail.html?id=1" class="btn-detail">Chi tiết</a>
+            </div>
+
+            <div class="product-card">
+                <img src="img/download (2).jpg" alt="LEGO Black" onerror="this.src='https://via.placeholder.com/250x200'">
+                <h3>Mô hình Technic Black Series</h3>
+                <span class="price">1.850.000đ</span>
+                <a href="product-detail.html?id=2" class="btn-detail">Chi tiết</a>
+            </div>
+
+            <div class="product-card">
+                <img src="img/download (3).jpg" alt="BMW Moto" onerror="this.src='https://via.placeholder.com/250x200'">
+                <h3>Siêu Moto BMW Technic</h3>
+                <span class="price">2.400.000đ</span>
+                <a href="product-detail.html?id=3" class="btn-detail">Chi tiết</a>
+            </div>
+
+            <div class="product-card">
+                <img src="img/download (4).jpg" alt="Speed Car" onerror="this.src='https://via.placeholder.com/250x200'">
+                <h3>Siêu xe Speed Car Green</h3>
+                <span class="price">950.000đ</span>
+                <a href="product-detail.html?id=4" class="btn-detail">Chi tiết</a>
+            </div>
+
+            <div class="product-card">
+                <img src="img/download (5).jpg" alt="Drone" onerror="this.src='https://via.placeholder.com/250x200'">
+                <h3>Drone X6 Pro Flycam</h3>
+                <span class="price">3.500.000đ</span>
+                <a href="product-detail.html?id=5" class="btn-detail">Chi tiết</a>
+            </div>
+
+            <div class="product-card">
+                <img src="img/download.jpg" alt="Buggy RC" onerror="this.src='https://via.placeholder.com/250x200'">
+                <h3>Xe địa hình Buggy RC</h3>
+                <span class="price">1.450.000đ</span>
+                <a href="product-detail.html?id=6" class="btn-detail">Chi tiết</a>
+            </div>
+
+            <div class="product-card">
+                <img src="img/images (1).jpg" alt="Plane" onerror="this.src='https://via.placeholder.com/250x200'">
+                <h3>Máy Bay Cứu Hộ Technic</h3>
+                <span class="price">1.100.000đ</span>
+                <a href="product-detail.html?id=7" class="btn-detail">Chi tiết</a>
+            </div>
+
+            <div class="product-card">
+                <img src="img/images.jpg" alt="Bugatti" onerror="this.src='https://via.placeholder.com/250x200'">
+                <h3>Bugatti Chiron RC Luxury</h3>
+                <span class="price">4.200.000đ</span>
+                <a href="product-detail.html?id=8" class="btn-detail">Chi tiết</a>
+            </div>
+        </div>
+    </main>
+
+    <footer style="margin-top: 50px; padding: 20px; text-align: center; border-top: 1px solid #eee;">
+        <p>&copy; 2026 ToyKid Store.</p>
+    </footer>
+</body>
+</html>
